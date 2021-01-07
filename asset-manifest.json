@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/syvelasquez10/users-manager-front/static/css/main.b62102fd.chunk.css",
-    "main.js": "/syvelasquez10/users-manager-front/static/js/main.81df0484.chunk.js",
-    "main.js.map": "/syvelasquez10/users-manager-front/static/js/main.81df0484.chunk.js.map",
-    "runtime-main.js": "/syvelasquez10/users-manager-front/static/js/runtime-main.efd0bca8.js",
-    "runtime-main.js.map": "/syvelasquez10/users-manager-front/static/js/runtime-main.efd0bca8.js.map",
-    "static/css/2.cc6972a9.chunk.css": "/syvelasquez10/users-manager-front/static/css/2.cc6972a9.chunk.css",
-    "static/js/2.f648543c.chunk.js": "/syvelasquez10/users-manager-front/static/js/2.f648543c.chunk.js",
-    "static/js/2.f648543c.chunk.js.map": "/syvelasquez10/users-manager-front/static/js/2.f648543c.chunk.js.map",
-    "index.html": "/syvelasquez10/users-manager-front/index.html",
-    "static/css/2.cc6972a9.chunk.css.map": "/syvelasquez10/users-manager-front/static/css/2.cc6972a9.chunk.css.map",
-    "static/css/main.b62102fd.chunk.css.map": "/syvelasquez10/users-manager-front/static/css/main.b62102fd.chunk.css.map",
-    "static/js/2.f648543c.chunk.js.LICENSE.txt": "/syvelasquez10/users-manager-front/static/js/2.f648543c.chunk.js.LICENSE.txt"
+    "main.css": "/users-manager-front/static/css/main.b62102fd.chunk.css",
+    "main.js": "/users-manager-front/static/js/main.81df0484.chunk.js",
+    "main.js.map": "/users-manager-front/static/js/main.81df0484.chunk.js.map",
+    "runtime-main.js": "/users-manager-front/static/js/runtime-main.9eb14a70.js",
+    "runtime-main.js.map": "/users-manager-front/static/js/runtime-main.9eb14a70.js.map",
+    "static/css/2.cc6972a9.chunk.css": "/users-manager-front/static/css/2.cc6972a9.chunk.css",
+    "static/js/2.1bdf3a64.chunk.js": "/users-manager-front/static/js/2.1bdf3a64.chunk.js",
+    "static/js/2.1bdf3a64.chunk.js.map": "/users-manager-front/static/js/2.1bdf3a64.chunk.js.map",
+    "index.html": "/users-manager-front/index.html",
+    "static/css/2.cc6972a9.chunk.css.map": "/users-manager-front/static/css/2.cc6972a9.chunk.css.map",
+    "static/css/main.b62102fd.chunk.css.map": "/users-manager-front/static/css/main.b62102fd.chunk.css.map",
+    "static/js/2.1bdf3a64.chunk.js.LICENSE.txt": "/users-manager-front/static/js/2.1bdf3a64.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.efd0bca8.js",
+    "static/js/runtime-main.9eb14a70.js",
     "static/css/2.cc6972a9.chunk.css",
-    "static/js/2.f648543c.chunk.js",
+    "static/js/2.1bdf3a64.chunk.js",
     "static/css/main.b62102fd.chunk.css",
     "static/js/main.81df0484.chunk.js"
   ]
