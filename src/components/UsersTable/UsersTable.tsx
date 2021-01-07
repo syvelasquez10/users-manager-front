@@ -1,24 +1,24 @@
-import React, { useEffect, useState } from "react";
-import { Button, Popconfirm, Table, Modal, notification } from "antd";
+import React, { FC, useEffect, useState } from "react";
+import { Button, Popconfirm, Table, notification } from "antd";
 import { DeleteFilled, EditFilled } from "@ant-design/icons";
 import "./UsersTable.css";
 import { User } from "../shared/models";
 import { deleteUser, getUsers } from "../../services/http.service";
 import UserForm from "../UserForm/UserForm";
-import TaskTable from "../TaskTable/TaskTable";
 
-export function UsersTable() {
+export interface TaskTableProps {
+  setModalVisible:(isModalVisible: boolean) => void;
+  setModalInfo:(modalInfo: React.ReactElement) => void;
+  setModalTitle:(title: string) => void;
+  setTasksVisible: (areTasksVisible: boolean) => void;
+  setSelectedUser: (user: User) => void;
+}
+
+const UsersTable: FC<TaskTableProps> = ({ setModalVisible, setModalInfo, setModalTitle, setTasksVisible, setSelectedUser }) => {
   const emptyUsers: User[] = [];
-  const emptyModalInfo: React.ReactNode = <></>;
-  const emptyUser: User = {name:''};
   const [users, setUsers] = useState(emptyUsers);
-  const [isModalVisible, setModalVisible] = useState(false);
-  const [modalInfo, setModalInfo] = useState(emptyModalInfo);
-  const [modalTitle, setModalTitle] = useState('');
   const [isConfirmLoading, setConfirmLoading] = useState(false);
   const [isPopconfirmVisible, setPopconfirmVisible] = useState(-1);
-  const [areTasksVisible, setTasksVisible] = useState(false);
-  const [selectedUser, setSelectedUser] = useState(emptyUser);
 
   useEffect(() => {
     loadUsers();
@@ -121,22 +121,8 @@ export function UsersTable() {
     },
   ];
 
-  const handleCloseModal = () => {
-    setModalVisible(false);
-  };
-
   return (
     <div className="user-table">
-      <Modal
-        title={modalTitle} 
-        visible={isModalVisible}
-        onOk={handleCloseModal}
-        onCancel={handleCloseModal}
-        okButtonProps={{ style: { display: "none" } }}
-        cancelButtonProps={{ style: { display: "none" } }}
-      >
-        {modalInfo}
-      </Modal>
       <h1>Users List</h1>
       <Button className="new-user" onClick={() => createUser()}>Crete new user</Button>
       <Table
@@ -144,7 +130,8 @@ export function UsersTable() {
         dataSource={users}
         pagination={{ pageSize: 5 }}
       />
-      { areTasksVisible ? <TaskTable user={selectedUser} setModalInfo={setModalInfo}  setModalTitle={setModalTitle} setModalVisible={setModalVisible} /> : <></>}
     </div>
   );
 }
+
+export default UsersTable;

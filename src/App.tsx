@@ -1,11 +1,10 @@
 import React from 'react';
 import './App.css';
-import { UsersTable } from './components/UsersTable/UsersTable';
-
+import { Home } from './components/Home/Home';
 function App() {
   return (
     <div className="App">
-      <UsersTable />
+      <Home />
     </div>
   );
 }
