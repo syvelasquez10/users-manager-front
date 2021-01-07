@@ -9,3 +9,7 @@
 .ant-modal-footer {
   display: none !important;
 }
+
+h1 {
+  color: white;
+}

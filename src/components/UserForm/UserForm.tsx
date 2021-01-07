@@ -1,5 +1,4 @@
 import { Button, Form, Input, notification } from "antd";
-import { title } from "process";
 import React, { FC, useEffect, useState } from "react";
 import { createUser, updateUser } from "../../services/http.service";
 import { User } from "../shared/models";
@@ -51,7 +50,6 @@ const UserForm: FC<UserFormProps> = ({ user, setModalVisible, loadUsers }) => {
     <div className="user-form">
       <Form
         form={form}
-        title={title}
         scrollToFirstError
         onFinish={onFinish}
       >

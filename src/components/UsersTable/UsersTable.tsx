@@ -5,16 +5,20 @@ import "./UsersTable.css";
 import { User } from "../shared/models";
 import { deleteUser, getUsers } from "../../services/http.service";
 import UserForm from "../UserForm/UserForm";
+import TaskTable from "../TaskTable/TaskTable";
 
 export function UsersTable() {
   const emptyUsers: User[] = [];
   const emptyModalInfo: React.ReactNode = <></>;
+  const emptyUser: User = {name:''};
   const [users, setUsers] = useState(emptyUsers);
   const [isModalVisible, setModalVisible] = useState(false);
   const [modalInfo, setModalInfo] = useState(emptyModalInfo);
   const [modalTitle, setModalTitle] = useState('');
   const [isConfirmLoading, setConfirmLoading] = useState(false);
   const [isPopconfirmVisible, setPopconfirmVisible] = useState(-1);
+  const [areTasksVisible, setTasksVisible] = useState(false);
+  const [selectedUser, setSelectedUser] = useState(emptyUser);
 
   useEffect(() => {
     loadUsers();
@@ -64,7 +68,8 @@ export function UsersTable() {
   };
 
   const seeTasks = (key: number) => {
-    console.log(key);
+    setSelectedUser(users[key]);
+    setTasksVisible(true);
   };
   const showPopconfirm = (key: number) => {
     setPopconfirmVisible(key);
@@ -132,12 +137,14 @@ export function UsersTable() {
       >
         {modalInfo}
       </Modal>
+      <h1>Users List</h1>
       <Button className="new-user" onClick={() => createUser()}>Crete new user</Button>
       <Table
         columns={columns}
         dataSource={users}
         pagination={{ pageSize: 5 }}
       />
+      { areTasksVisible ? <TaskTable user={selectedUser} setModalInfo={setModalInfo}  setModalTitle={setModalTitle} setModalVisible={setModalVisible} /> : <></>}
     </div>
   );
 }

@@ -3,3 +3,11 @@ export interface User {
   key?: number;
   name: string;
 }
+
+export interface Task {
+  id?: string;
+  key?: number;
+  description: string;
+  state: string;
+  user_id: string;
+}
