@@ -3,6 +3,7 @@ import { Button, Popconfirm, Table, notification, Card } from "antd";
 import React, { FC, useEffect, useState } from "react";
 import { getTasks, deleteTask} from "../../services/http.service";
 import { Task, User } from "../shared/models";
+import TaskForm from "../TaskForm/TaskForm";
 import './TaskTable.css';
 
 export interface TaskTableProps {
@@ -12,13 +13,9 @@ export interface TaskTableProps {
   setModalTitle:(title: string) => void;
 }
 
-const TaskTable: FC<TaskTableProps> = ({ user }) => {
+const TaskTable: FC<TaskTableProps> = ({ user, setModalVisible, setModalInfo, setModalTitle }) => {
   const emptyTasks: Task[] = [];
-  const emptyModalInfo: React.ReactNode = <></>;
   const [tasks, setTasks] = useState(emptyTasks);
-  const [isModalVisible, setModalVisible] = useState(false);
-  const [modalInfo, setModalInfo] = useState(emptyModalInfo);
-  const [modalTitle, setModalTitle] = useState('');
   const [isConfirmLoading, setConfirmLoading] = useState(false);
   const [isPopconfirmVisible, setPopconfirmVisible] = useState(-1);
 
@@ -28,7 +25,6 @@ const TaskTable: FC<TaskTableProps> = ({ user }) => {
 
   const loadTasks = () => {
     getTasks(user.id!!).then((tasksRes) => {
-      console.log(tasksRes)
       tasksRes = tasksRes.map((task, index) => {
         task.key = index;
         return task;
@@ -40,13 +36,14 @@ const TaskTable: FC<TaskTableProps> = ({ user }) => {
 
   const editTask = (key: number) => {
     setModalTitle('Edit Task');
-    // setModalInfo(<TaskForm task={tasks[key]} setModalVisible={setModalVisible} loadTasks={loadTasks}/>);
+    setModalInfo(<TaskForm task={tasks[key]} userId={user.id!!} setModalVisible={setModalVisible} loadTasks={loadTasks}/>);
     setModalVisible(true);
   };
 
   const createTask = () => {
+    console.log('llega')
     setModalTitle('Create New Task');
-    // setModalInfo(<TaskForm setModalVisible={setModalVisible} loadTasks={loadTasks}/>);
+    setModalInfo(<TaskForm setModalVisible={setModalVisible} userId={user.id!!} loadTasks={loadTasks}/>);
     setModalVisible(true);
   };
 
@@ -107,7 +104,7 @@ const TaskTable: FC<TaskTableProps> = ({ user }) => {
           />
 
           <Popconfirm
-            title="Are you sure to delete this user?"
+            title="Are you sure to delete this task?"
             onConfirm={() => clickDeleteTask(key)}
             onCancel={() => setPopconfirmVisible(-1)}
             okText="Yes"
@@ -125,21 +122,17 @@ const TaskTable: FC<TaskTableProps> = ({ user }) => {
     }
   ];
 
-  const handleCloseModal = () => {
-    setModalVisible(false);
-  };
-
   return (
     <div className="user-task">
       <Card title={`Tasks of user ${user.name}`}>
+      <Button className="new-task" onClick={() => createTask()}>
+        Crete new task for {user.name}
+      </Button>
       <Table
         columns={columns}
         dataSource={tasks}
         pagination={{ pageSize: 5 }}
       />
-      <Button className="new-task" onClick={() => createTask()}>
-        Crete new task for {user.name}
-      </Button>
       </Card>
     </div>
   );

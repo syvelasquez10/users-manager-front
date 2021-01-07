@@ -4,10 +4,15 @@ export interface User {
   name: string;
 }
 
+export enum TaskState {
+  'done',
+  'to do'
+};
+
 export interface Task {
   id?: string;
   key?: number;
   description: string;
-  state: string;
+  state: TaskState;
   user_id: string;
 }

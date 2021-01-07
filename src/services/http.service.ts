@@ -29,9 +29,9 @@ export const deleteTask = (id: string): Promise<any> => {
 };
 
 export const updateTask = (task: Task): Promise<any> => {
-  return axios.patch(urlBack + "tasks/" + task.id, task);
+  return axios.patch(urlBack + "user_tasks/" + task.id, task);
 };
 
 export const createTask = (task: Task): Promise<any> => {
-  return axios.post(urlBack + "tasks/", task);
+  return axios.post(urlBack + "users/" + task.user_id + "/user_tasks/", task);
 };
